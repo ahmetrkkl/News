@@ -1,18 +1,17 @@
-import 'package:news/models/result.dart';
+import 'package:news/models/general_news_result.dart';
 
-
-class News {
+class GeneralNewsConverter {
   bool? success;
-  List<Result>? result;
+  List<GeneralNewsResult>? result;
 
-  News({this.success, this.result});
+  GeneralNewsConverter({this.success, this.result});
 
-  News.fromJson(Map<String, dynamic> json) {
+  GeneralNewsConverter.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     if (json['result'] != null) {
-      result = <Result>[];
+      result = <GeneralNewsResult>[];
       json['result'].forEach((v) {
-        result!.add(Result.fromJson(v));
+        result!.add(GeneralNewsResult.fromJson(v));
       });
     }
   }

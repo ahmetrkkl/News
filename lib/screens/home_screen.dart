@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:news/services/news_api_service.dart';
-import '../models/result.dart';
+import '../models/general_news_result.dart';
 import 'detail_page.dart';
 import 'language_option.dart';
 
-
 class HomeScreen extends StatefulWidget {
-  final String apiKey;
-  final String apiUrl;
-
-  HomeScreen({required this.apiKey, required this.apiUrl, Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late Future<List<Result>> _newsFuture;
+  late Future<List<GeneralNewsResult>> _newsFuture;
   String currentLanguageCode = 'tr';
 
   @override
@@ -25,9 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     _newsFuture = _fetchNews();
   }
 
-  Future<List<Result>> _fetchNews() async {
-    NewsApiService apiService =
-    NewsApiService(apiKey: widget.apiKey, apiUrl: widget.apiUrl);
+  Future<List<GeneralNewsResult>> _fetchNews() async {
+    NewsApiService apiService = NewsApiService();
     return await apiService.fetchNews();
   }
 
@@ -79,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: FutureBuilder<List<Result>>(
+      body: FutureBuilder<List<GeneralNewsResult>>(
         future: _newsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -92,11 +87,11 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           } else {
             if (snapshot.hasData) {
-              List<Result>? newsList = snapshot.data;
+              List<GeneralNewsResult>? newsList = snapshot.data;
               return ListView.builder(
                 itemCount: newsList!.length,
                 itemBuilder: (context, index) {
-                  Result newsItem = newsList[index];
+                  GeneralNewsResult newsItem = newsList[index];
                   return ListTile(
                     title: Text(newsItem.name ?? ''),
                     subtitle: Text(newsItem.description ?? ''),

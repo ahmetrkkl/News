@@ -6,7 +6,7 @@ import 'package:news/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(apiUrl: 'https://api.collectapi.com/news/getNews?country=tr&tag=general', apiKey: '64uwmp9Gd42pXYiQJCxxun:2znBzmkUH17dnUs1kKQr2b',));
+    await tester.pumpWidget(MyApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

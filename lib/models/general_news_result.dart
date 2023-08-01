@@ -1,4 +1,4 @@
-class Result {
+class GeneralNewsResult {
   String? key;
   String? url;
   String? description;
@@ -6,15 +6,15 @@ class Result {
   String? name;
   String? source;
 
-  Result(
+  GeneralNewsResult(
       {this.key,
-        this.url,
-        this.description,
-        this.image,
-        this.name,
-        this.source});
+      this.url,
+      this.description,
+      this.image,
+      this.name,
+      this.source});
 
-  Result.fromJson(Map<String, dynamic> json) {
+  GeneralNewsResult.fromJson(Map<String, dynamic> json) {
     key = json['key'];
     url = json['url'];
     description = json['description'];

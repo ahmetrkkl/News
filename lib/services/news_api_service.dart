@@ -1,25 +1,26 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:news/models/news.dart';
-
-import '../models/result.dart';
+import 'package:news/converters/general_news_converter.dart';
+import '../models/general_news_result.dart';
+import '../util/constant.dart' as constants;
 
 class NewsApiService {
-  final String apiKey;
-  final String apiUrl;
+  NewsApiService();
 
-  NewsApiService({required this.apiKey, required this.apiUrl});
+  String apiKey = constants.apiKey;
+  String apiUrl = constants.generalNewsUrl;
 
-  Future<List<Result>> fetchNews() async {
+  Future<List<GeneralNewsResult>> fetchNews() async {
     final response = await http.get(
       Uri.parse(apiUrl),
-      headers: {'Authorization': 'Bearer $apiKey'},
+      headers: {'authorization': apiKey, 'content-type': 'application/json'},
     );
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
-      News news = News.fromJson(jsonData);
-      return news.result ?? [];
+      GeneralNewsConverter generalNewsConverter =
+          GeneralNewsConverter.fromJson(jsonData);
+      return generalNewsConverter.result ?? [];
     } else {
       throw Exception('Failed to load news');
     }
