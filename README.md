@@ -1,4 +1,4 @@
-# newsnewscollect
+# news
 
 A new Flutter project.
 

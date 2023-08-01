@@ -1,4 +1,4 @@
-import 'package:newsnewscollect/models/result.dart';
+import 'package:news/models/result.dart';
 
 
 class News {

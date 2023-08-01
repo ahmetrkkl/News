@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newsnewscollect/screens/home_screen.dart';
+import 'package:news/screens/home_screen.dart';
 
 void main() {
   final String apiKey = 'apikey 64uwmp9Gd42pXYiQJCxxun:2znBzmkUH17dnUs1kKQr2b';

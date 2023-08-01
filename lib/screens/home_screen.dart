@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsnewscollect/services/news_api_service.dart';
+import 'package:news/services/news_api_service.dart';
 import '../models/result.dart';
 import 'detail_page.dart';
 import 'language_option.dart';
