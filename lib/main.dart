@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/screens/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,17 +12,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.green[900],
-        hintColor: Colors.green,
-        scaffoldBackgroundColor: Colors.green[800],
+        primaryColor: Colors.grey[900],
+        hintColor: Colors.grey,
+        scaffoldBackgroundColor: Colors.blueGrey,
         textTheme: const TextTheme(
           bodyMedium: TextStyle(color: Colors.white),
         ),
         buttonTheme: const ButtonThemeData(
-          buttonColor: Colors.green,
+          buttonColor: Colors.grey,
         ),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
