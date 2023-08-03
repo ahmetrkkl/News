@@ -167,6 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
+            backgroundColor: Colors.black38,
             icon: Icon(Icons.login),
             label: 'Giriş Yap',
           ),
