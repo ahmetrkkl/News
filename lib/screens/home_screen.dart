@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news/screens/register_page.dart';
+import 'package:news/screens/settings_page.dart';
 import 'package:news/services/news_api_service.dart';
 import '../models/general_news_result.dart';
-import 'detail_page.dart';
 import 'language_option.dart';
 import 'login_page.dart';
 import 'news_detail_screen.dart';
@@ -52,12 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Detail Page'),
+              title: const Text('Ayarlar'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const DetailPage(),
+                    builder: (context) => SettingsPage(),
                   ),
                 );
               },
