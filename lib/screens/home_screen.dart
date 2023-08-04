@@ -118,6 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Card(
                         elevation: 4,
                         color: Colors.black38,
+                        child: Hero(
+                          tag: "newsItem_$index",
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
@@ -154,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
+                    ),
                     ),
                   );
                 },

@@ -21,7 +21,8 @@ class NewsDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            newsItem.image != null
+            Hero(tag:"newsItem_${newsItem.key}",
+            child: newsItem.image != null
                 ? Image.network(
               newsItem.image!,
               width: 400,
@@ -29,6 +30,8 @@ class NewsDetailScreen extends StatelessWidget {
               fit: BoxFit.cover,
             )
                 : const SizedBox.shrink(),
+      ),
+
             const SizedBox(height: 16),
             Text(
               newsItem.name ?? '',
