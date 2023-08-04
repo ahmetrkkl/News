@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const SizedBox(height: 2),
                                   Text(
                                     newsItem.description ?? '',
-                                    style: const TextStyle(fontSize: 2),
+                                    style: const TextStyle(fontSize: 0),
                                   ),
                                 ],
                               ),
