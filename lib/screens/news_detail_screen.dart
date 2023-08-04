@@ -1,25 +1,37 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NewsDetailScreen extends StatelessWidget {
-  final String title;
-  final String content;
+import '../models/general_news_result.dart';
 
-  NewsDetailScreen({required this.title, required this.content});
+class NewsDetailScreen extends StatelessWidget {
+  final GeneralNewsResult newsItem;
+
+  NewsDetailScreen({required this.newsItem});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black38,
-        title: Text(title),
+        title: Text(newsItem.name ?? ''),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
+      child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            newsItem.image != null
+                ? Image.network(
+              newsItem.image!,
+              width: 400,
+              height: 200,
+              fit: BoxFit.cover,
+            )
+                : const SizedBox.shrink(),
+            const SizedBox(height: 16),
             Text(
-              title,
+              newsItem.name ?? '',
               style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.w900,
@@ -27,10 +39,16 @@ class NewsDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              content,
+              newsItem.description ?? '',
               style: const TextStyle(fontSize: 28),
             ),
-          ],
+            const SizedBox(height: 16),
+            Text(
+              'Kaynak: ${newsItem.source ?? ''}',
+              style: const TextStyle(fontSize: 17),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -29,6 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
     NewsApiService apiService = NewsApiService();
     return await apiService.fetchNews();
   }
+  Future<void> _refreshNews()async{
+    setState(() {
+      _newsFuture = _fetchNews();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: FutureBuilder<List<GeneralNewsResult>>(
+          body: RefreshIndicator(
+    onRefresh: _refreshNews,
+
+      child: FutureBuilder<List<GeneralNewsResult>>(
         future: _newsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -103,10 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => NewsDetailScreen(
-                              title: newsItem.name ?? '',
-                              content: newsItem.description ?? '',
-                            ),
+                            builder: (context) => NewsDetailScreen(newsItem: newsItem),
                           ),
                         );
                       },
@@ -161,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         },
       ),
+          ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black38,
         currentIndex: _selectedIndex,
