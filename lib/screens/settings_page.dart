@@ -9,7 +9,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool _darkThemeEnabled = false;
   bool _notificationEnabled = true;
-  bool _vibrationEnabled = true;
   bool _autoRefreshEnabled = false;
   int _selectedRefreshInterval = 30;
 
@@ -44,16 +43,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   _notificationEnabled = value;
                 });
                 _applyNotificationSettings();
-              },
-            ),
-            SwitchListTile(
-              title: const Text('Titreşim'),
-              value: _vibrationEnabled,
-              onChanged: (value) {
-                setState(() {
-                  _vibrationEnabled = value;
-                });
-                _applyVibrationSettings();
               },
             ),
             SwitchListTile(
@@ -95,10 +84,6 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _applyNotificationSettings() {
-
-  }
-
-  void _applyVibrationSettings() {
 
   }
 
