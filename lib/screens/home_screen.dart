@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news/screens/register_page.dart';
 import 'package:news/screens/settings_page.dart';
 import 'package:news/services/news_api_service.dart';
 import '../models/general_news_result.dart';
 import 'language_option.dart';
-import 'login_page.dart';
 import 'news_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,11 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
     NewsApiService apiService = NewsApiService();
     return await apiService.fetchNews();
   }
-  Future<void> _refreshNews()async{
+
+  Future<void> _refreshNews() async {
     setState(() {
       _newsFuture = _fetchNews();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,130 +84,98 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-          body: RefreshIndicator(
-    onRefresh: _refreshNews,
-
-      child: FutureBuilder<List<GeneralNewsResult>>(
-        future: _newsFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          } else {
-            if (snapshot.hasData) {
-              List<GeneralNewsResult>? newsList = snapshot.data;
-              return ListView.builder(
-                itemCount: newsList!.length,
-                itemBuilder: (context, index) {
-                  GeneralNewsResult newsItem = newsList[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => NewsDetailScreen(newsItem: newsItem),
-                          ),
-                        );
-                      },
-                      child: Card(
-                        elevation: 4,
-                        color: Colors.black38,
-                        child: Hero(
-                          tag: "newsItem_$index",
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            newsItem.image != null
-                                ? Image.network(
-                                newsItem.image!,
-                                width: 200,
-                                height: 200,
-                                fit: BoxFit.cover,
-                            )
-                                : const SizedBox.shrink(),
-                            Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(height: 2),
-                                  Text(
-                                    newsItem.name ?? '',
-                                    style: const TextStyle(
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 2),
-                                  Text(
-                                    newsItem.description ?? '',
-                                    style: const TextStyle(fontSize: 0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    ),
-                  );
-                },
+      body: RefreshIndicator(
+        onRefresh: _refreshNews,
+        child: FutureBuilder<List<GeneralNewsResult>>(
+          future: _newsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
               );
             } else {
-              return const Center(
-                child: Text('No news available.'),
-              );
+              if (snapshot.hasData) {
+                List<GeneralNewsResult>? newsList = snapshot.data;
+                return ListView.builder(
+                  itemCount: newsList!.length,
+                  itemBuilder: (context, index) {
+                    GeneralNewsResult newsItem = newsList[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NewsDetailScreen(newsItem: newsItem),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          elevation: 4,
+                          color: Colors.black38,
+                          child: Hero(
+                            tag: "newsItem_$index",
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                newsItem.image != null
+                                    ? Image.network(
+                                  newsItem.image!,
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.cover,
+                                )
+                                    : const SizedBox.shrink(),
+                                Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        newsItem.name ?? '',
+                                        style: const TextStyle(
+                                          fontSize: 26,
+                                          fontWeight: FontWeight.w900,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        newsItem.description ?? '',
+                                        style: const TextStyle(fontSize: 0),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              } else {
+                return const Center(
+                  child: Text('No news available.'),
+                );
+              }
             }
-          }
-        },
-      ),
-          ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black38,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
-            backgroundColor: Colors.black38,
-            icon: Icon(Icons.login),
-            label: 'Giriş Yap',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_add),
-            label: 'Kayıt Ol',
-          ),
-        ],
+          },
+        ),
       ),
     );
   }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-
-    if (index == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LoginPage(),
-        ),
-      );
-    } else if (index == 1) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RegisterPage(),
-        ),
-      );
-    }
   }
 }
