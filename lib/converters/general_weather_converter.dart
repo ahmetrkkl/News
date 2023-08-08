@@ -8,9 +8,15 @@ class GeneralWeatherConverter {
 
   GeneralWeatherConverter.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    result =
-    (json['result'] != null ? new GeneralWeatherResult.fromJson(json['result']) : null) as List<GeneralWeatherResult>?;
+    if (json['result'] != null) {
+      result = List<GeneralWeatherResult>.from(
+        json['result'].map((data) => GeneralWeatherResult.fromJson(data)),
+      );
+    } else {
+      result = [];
+    }
   }
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};

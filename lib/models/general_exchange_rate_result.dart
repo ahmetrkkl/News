@@ -10,7 +10,7 @@ class GeneralExchangeRateResult {
     this.name,
     this.rate,
     this.calculatedstr,
-    this.calculated
+    this.calculated,
   });
 
   GeneralExchangeRateResult.fromJson(Map<String, dynamic> json) {

@@ -36,17 +36,17 @@ class GeneralWeatherResult {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['date'] = this.date;
-    data['day'] = this.day;
-    data['icon'] = this.icon;
-    data['description'] = this.description;
-    data['status'] = this.status;
-    data['degree'] = this.degree;
-    data['min'] = this.min;
-    data['max'] = this.max;
-    data['night'] = this.night;
-    data['humidity'] = this.humidity;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['date'] = date;
+    data['day'] = day;
+    data['icon'] = icon;
+    data['description'] = description;
+    data['status'] = status;
+    data['degree'] = degree;
+    data['min'] = min;
+    data['max'] = max;
+    data['night'] = night;
+    data['humidity'] = humidity;
     return data;
   }
 }

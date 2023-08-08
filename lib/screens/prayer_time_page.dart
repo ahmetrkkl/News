@@ -22,6 +22,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
     PrayerTimeApiService apiService = PrayerTimeApiService();
     return await apiService.fetchPrayerTime();
   }
+
   Future<void> _refreshPrayerTime() async {
     setState(() {
       _prayerTimeFuture = _fetchPrayerTime();
@@ -32,6 +33,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black38,
         title: const Text('Namaz Vakti'),
       ),
       body: RefreshIndicator(
@@ -43,21 +45,19 @@ class PrayerTimePageState extends State<PrayerTimePage> {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text('Error: ${snapshot.error}'),
-              );
-            } else {
-              if (snapshot.hasData) {
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshot.error}'),
+                );
+              } else if (snapshot.hasData) {
                 List<GeneralPrayerTimeResult>? prayerTimeList = snapshot.data;
                 return ListView.builder(
                   itemCount: prayerTimeList!.length,
                   itemBuilder: (context, index) {
-                    GeneralPrayerTimeResult prayerTimeItem = prayerTimeList[index];
-                    return ListTile(
-                      title: Text(prayerTimeItem.saat ?? ''),
-                      subtitle: Text(prayerTimeItem.vakit ?? '')
-                    );
+                    GeneralPrayerTimeResult prayerTimeItem =
+                    prayerTimeList[index];
+                    return _buildPrayerTimeCard(prayerTimeItem);
                   },
                 );
               } else {
@@ -65,8 +65,44 @@ class PrayerTimePageState extends State<PrayerTimePage> {
                   child: Text('No data available.'),
                 );
               }
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
           },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPrayerTimeCard(GeneralPrayerTimeResult prayerTime) {
+    return Card(
+      color: Colors.blueGrey,
+      elevation: 4,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              prayerTime.vakit ?? '',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              prayerTime.saat ?? '',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
+          ],
         ),
       ),
     );

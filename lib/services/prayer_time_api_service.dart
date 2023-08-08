@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../converters/general_prayer_time_converter.dart';
 import '../models/general_prayer_time_result.dart';
 import '../util/constant.dart' as constants;
 
@@ -17,11 +18,9 @@ class PrayerTimeApiService {
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
-      List<GeneralPrayerTimeResult> prayerTime = [];
-      jsonData.forEach((data) {
-        prayerTime.add(GeneralPrayerTimeResult.fromJson(data));
-      });
-      return prayerTime;
+      GeneralPrayerTimeConverter converter =
+      GeneralPrayerTimeConverter.fromJson(jsonData);
+      return converter.result ?? [];
     } else {
       throw Exception('Failed to load prayer times');
     }

@@ -17,7 +17,7 @@ class GeneralExchangeRateConverter {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['success'] = this.success;
     if (result != null) {
       data['result'] = result!.map((v) => v.toJson()).toList();

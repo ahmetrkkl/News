@@ -2,10 +2,10 @@ class GeneralPrayerTimeResult {
   String? saat;
   String? vakit;
 
-  GeneralPrayerTimeResult(
-      {this.saat,
-        this.vakit
-      });
+  GeneralPrayerTimeResult({
+    this.saat,
+    this.vakit,
+  });
 
   GeneralPrayerTimeResult.fromJson(Map<String, dynamic> json) {
     saat = json['saat'];
@@ -13,9 +13,9 @@ class GeneralPrayerTimeResult {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['saat'] = this.saat;
-    data['vakit'] = this.vakit;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['saat'] = saat;
+    data['vakit'] = vakit;
     return data;
   }
 }
