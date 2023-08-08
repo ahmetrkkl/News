@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:news/models/general_prayer_time_result.dart';
+import 'package:news/screens/pharmacy_page.dart';
+import 'package:news/screens/settings_page.dart';
+import 'package:news/screens/weather_page.dart';
 import 'package:news/services/prayer_time_api_service.dart';
+
+import 'exchange_rate_page.dart';
+import 'home_screen.dart';
 
 class PrayerTimePage extends StatefulWidget {
   const PrayerTimePage({Key? key}) : super(key: key);
@@ -35,6 +41,79 @@ class PrayerTimePageState extends State<PrayerTimePage> {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[900],
         title: const Text('Namaz Vakitleri'),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.blueGrey,
+        child: ListView(
+          children: [
+            ListTile(
+              title: const Text('Haberler'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Nöbetçi Eczane'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PharmacyPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Döviz Kuru'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ExchangeRatePage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Hava Durumu'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WeatherPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Namaz Vakitleri'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Ayarlar'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsPage(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(16),

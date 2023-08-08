@@ -36,19 +36,19 @@ class NewsDetailScreen extends StatelessWidget {
             Text(
               newsItem.name ?? '',
               style: const TextStyle(
-                fontSize: 32,
+                fontSize: 28,
                 fontWeight: FontWeight.w900,
               ),
             ),
             const SizedBox(height: 16),
             Text(
               newsItem.description ?? '',
-              style: const TextStyle(fontSize: 28),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 16),
             Text(
               'Kaynak: ${newsItem.source ?? ''}',
-              style: const TextStyle(fontSize: 17),
+              style: const TextStyle(fontSize: 12),
               ),
             ],
           ),

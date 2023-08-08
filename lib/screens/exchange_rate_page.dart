@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:news/screens/pharmacy_page.dart';
+import 'package:news/screens/prayer_time_page.dart';
+import 'package:news/screens/settings_page.dart';
+import 'package:news/screens/weather_page.dart';
 import '../models/general_exchange_rate_result.dart';
 import '../services/exchange_rate_api_service.dart';
+import 'home_screen.dart';
 
 class ExchangeRatePage extends StatefulWidget {
   const ExchangeRatePage({Key? key}) : super(key: key);
@@ -33,6 +38,80 @@ class ExchangeRatePageState extends State<ExchangeRatePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Döviz Kuru'),
+        backgroundColor: Colors.blue,
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.blue,
+        child: ListView(
+          children: [
+            ListTile(
+              title: const Text('Haberler'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Nöbetçi Eczane'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PharmacyPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Döviz Kuru'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Hava Durumu'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WeatherPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Namaz Vakitleri'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PrayerTimePage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Ayarlar'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsPage(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: RefreshIndicator(
         onRefresh: _refreshExchangeRate,

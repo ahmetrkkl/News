@@ -71,7 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
             inactiveColorPrimary: Colors.blueGrey,
           ),
           PersistentBottomNavBarItem(
-              icon: const Icon(Icons.add_box_rounded),
+              icon: const Icon(
+                  Icons.newspaper,
+              color: Colors.blueGrey,
+              ),
               title: "Haberler",
               activeColorPrimary: Colors.red,
               inactiveColorPrimary: Colors.blueGrey,
@@ -115,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
           curve: Curves.ease,
           duration: Duration(milliseconds: 200),
         ),
-        navBarStyle: NavBarStyle.style15,
+        navBarStyle: NavBarStyle.style16,
       ),
     );
   }
