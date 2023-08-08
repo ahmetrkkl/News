@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: PersistentTabView(
         context,
         controller: _controller,
-        screens: [
+        screens: const [
           PharmacyPage(),
           ExchangeRatePage(),
           HomeScreen(),
@@ -59,36 +59,36 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         items: [
           PersistentBottomNavBarItem(
-            icon: Icon(Icons.local_pharmacy),
+            icon: const Icon(Icons.local_pharmacy),
             title: "ECZANE",
             activeColorPrimary: Colors.blue,
             inactiveColorPrimary: Colors.grey,
           ),
           PersistentBottomNavBarItem(
-            icon: Icon(Icons.currency_exchange),
+            icon: const Icon(Icons.currency_exchange),
             title: "DÖVİZ",
             activeColorPrimary: Colors.blue,
             inactiveColorPrimary: Colors.grey,
           ),
           PersistentBottomNavBarItem(
-              icon: Icon(CupertinoIcons.add),
+              icon: const Icon(CupertinoIcons.add),
               title: "HABERLER",
               activeColorPrimary: Colors.blue,
               inactiveColorPrimary: Colors.grey,
               iconSize: 30,
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               )
           ),
           PersistentBottomNavBarItem(
-            icon: Icon(Icons.cloud),
+            icon: const Icon(Icons.cloud),
             title: "Hava Durumu",
             activeColorPrimary: Colors.blue,
             inactiveColorPrimary: Colors.grey,
           ),
           PersistentBottomNavBarItem(
-            icon: Icon(Icons.mosque),
+            icon: const Icon(Icons.mosque),
             title: "Namaz Vakitleri",
             activeColorPrimary: Colors.blue,
             inactiveColorPrimary: Colors.grey,
@@ -106,11 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
-        itemAnimationProperties: ItemAnimationProperties(
+        itemAnimationProperties: const ItemAnimationProperties(
           duration: Duration(milliseconds: 200),
           curve: Curves.ease,
         ),
-        screenTransitionAnimation: ScreenTransitionAnimation(
+        screenTransitionAnimation: const ScreenTransitionAnimation(
           animateTabTransition: true,
           curve: Curves.ease,
           duration: Duration(milliseconds: 200),

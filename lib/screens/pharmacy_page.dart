@@ -32,7 +32,8 @@
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Nöbetçi Eczane'),
+          title: const Text('NÖBETÇİ ECZANE'),
+          backgroundColor: Colors.blueGrey[900],
         ),
         body: RefreshIndicator(
           onRefresh: _refreshPharmacy,
@@ -54,10 +55,45 @@
                     itemCount: pharmacyList!.length,
                     itemBuilder: (context, index) {
                       GeneralPharmacyResult pharmacyItem = pharmacyList[index];
-                      return ListTile(
-                        title: Text(pharmacyItem.name ?? ''),
-                        subtitle: Text(pharmacyItem.address ?? ''),
-                        trailing: Text(pharmacyItem.phone ?? ''),
+                      return Card(
+                        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        elevation: 2,
+                        child: ListTile(
+                          title: Text(
+                            '${pharmacyItem.name ?? ''} ECZANESİ',
+                            style: const TextStyle(
+                              color: Colors.redAccent,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                pharmacyItem.address ?? '',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                pharmacyItem.phone ?? '',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                              Text(
+                                pharmacyItem.dist ?? '',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey[600],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       );
                     },
                   );

@@ -8,8 +8,12 @@ class GeneralExchangeRateConverter {
 
   GeneralExchangeRateConverter.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    result =
-    (json['result'] != null ? GeneralExchangeRateResult.fromJson(json['result']) : null) as List<GeneralExchangeRateResult>?;
+    if (json['result'] != null) {
+      result = <GeneralExchangeRateResult>[];
+      json['result'].forEach((v) {
+        result!.add(GeneralExchangeRateResult.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {

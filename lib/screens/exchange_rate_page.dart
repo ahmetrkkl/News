@@ -54,10 +54,38 @@ class ExchangeRatePageState extends State<ExchangeRatePage> {
                   itemCount: exchangeRateList!.length,
                   itemBuilder: (context, index) {
                     GeneralExchangeRateResult exchangeRateItem = exchangeRateList[index];
-                    return ListTile(
-                      title: Text(exchangeRateItem.code ?? ''),
-                      subtitle: Text(exchangeRateItem.name ?? ''),
-                      trailing: Text(exchangeRateItem.calculatedstr ?? ''),
+                    return Card(
+                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      elevation: 2,
+                      child: ListTile(
+                        title: Text(
+                          '${exchangeRateItem.name ?? ''} ',
+                          style: const TextStyle(
+                            color: Colors.redAccent,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              exchangeRateItem.code ?? '',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              exchangeRateItem.calculatedstr ?? '',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     );
                   },
                 );
