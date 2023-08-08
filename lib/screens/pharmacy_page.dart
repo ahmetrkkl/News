@@ -32,39 +32,50 @@
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('NÖBETÇİ ECZANE'),
-          backgroundColor: Colors.blueGrey[900],
+          title: const Text('Nöbetçi Eczane'),
+          backgroundColor: Colors.orange[700],
         ),
-        body: RefreshIndicator(
-          onRefresh: _refreshPharmacy,
-          child: FutureBuilder<List<GeneralPharmacyResult>>(
-            future: _pharmacyFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text('Error: ${snapshot.error}'),
-                );
-              } else {
-                if (snapshot.hasData) {
-                  List<GeneralPharmacyResult>? pharmacyList = snapshot.data;
-                  return ListView.builder(
-                    itemCount: pharmacyList!.length,
-                    itemBuilder: (context, index) {
-                      GeneralPharmacyResult pharmacyItem = pharmacyList[index];
+      body: Container(
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+      gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [Colors.orange.shade200, Colors.orange.shade200],
+      ),
+      ),
+      child: RefreshIndicator(
+      color: Colors.blue,
+      onRefresh: _refreshPharmacy,
+      child: FutureBuilder<List<GeneralPharmacyResult>>(
+      future: _pharmacyFuture,
+      builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+      return Center(
+      child: CircularProgressIndicator(),
+      );
+      } else if (snapshot.hasError) {
+      return Center(
+      child: Text('Hata: ${snapshot.error}'),
+      );
+      } else {
+      if (snapshot.hasData) {
+      List<GeneralPharmacyResult>? weatherList = snapshot.data;
+      return ListView.builder(
+      itemCount: weatherList!.length,
+      itemBuilder: (context, index) {
+      GeneralPharmacyResult pharmacyItem = weatherList[index];
                       return Card(
+                        color: Colors.orange.shade400,
                         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         elevation: 2,
                         child: ListTile(
                           title: Text(
                             '${pharmacyItem.name ?? ''} ECZANESİ',
                             style: const TextStyle(
-                              color: Colors.redAccent,
+                              color: Color.fromRGBO(140, 9, 9, 100),
                               fontSize: 18,
-                              fontWeight: FontWeight.w900,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           subtitle: Column(
@@ -74,21 +85,24 @@
                                 pharmacyItem.address ?? '',
                                 style: const TextStyle(
                                   fontSize: 16,
-                                  color: Colors.black,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold
                                 ),
                               ),
                               Text(
-                                pharmacyItem.phone ?? '',
+                                  '0${pharmacyItem.phone ?? ''} ',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.grey[600],
+                                  color: Colors.blueGrey,
+                                  fontWeight: FontWeight.bold
                                 ),
                               ),
                               Text(
                                 pharmacyItem.dist ?? '',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.grey[600],
+                                  color: Colors.blueGrey,
+                                  fontWeight: FontWeight.bold
                                 ),
                               )
                             ],
@@ -106,6 +120,7 @@
             },
           ),
         ),
+      ),
       );
     }
   }

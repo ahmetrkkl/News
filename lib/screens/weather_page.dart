@@ -34,7 +34,7 @@ class _WeatherPageState extends State<WeatherPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Hava Durumu', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green[900],
         elevation: 0,
       ),
       body: Container(
@@ -43,7 +43,7 @@ class _WeatherPageState extends State<WeatherPage> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.blue.shade200, Colors.blue.shade100],
+            colors: [Colors.greenAccent.shade200, Colors.greenAccent.shade100],
           ),
         ),
         child: RefreshIndicator(
@@ -67,47 +67,53 @@ class _WeatherPageState extends State<WeatherPage> {
                     itemCount: weatherList!.length,
                     itemBuilder: (context, index) {
                       GeneralWeatherResult weatherItem = weatherList[index];
-                      return ListTile(
-                        tileColor: Colors.black,
-                        leading: Image.network(
-                          weatherItem.icon ?? '',
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.contain,
-                        ),
-                        title: Text(
-                          weatherItem.date ?? '',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                      return Card(
+                        color: Colors.green[900],
+                        elevation: 10,
+                        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: ListTile(
+                            leading: Image.network(
+                              weatherItem.icon ?? '',
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.contain,
+                            ),
+                            title: Text(
+                              weatherItem.date ?? '',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.greenAccent[200],
+                              ),
+                            ),
+                            subtitle: Text(
+                              '${weatherItem.day ?? ''} - ${weatherItem.description ?? ''}',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey[200],
+                              ),
+                            ),
+                            trailing: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'Max: ${weatherItem.max ?? '-'}°C',
+                                  style: TextStyle(color: Colors.greenAccent[200]),
+                                ),
+                                Text(
+                                  'Min: ${weatherItem.min ?? '-'}°C',
+                                  style: TextStyle(color: Colors.greenAccent[200]),
+                                ),
+                                Text(
+                                  'Nem: ${weatherItem.humidity ?? '-'}%',
+                                  style: TextStyle(color: Colors.greenAccent[200]),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        subtitle: Text(
-                          '${weatherItem.day ?? ''} - ${weatherItem.description ?? ''}',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        trailing: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              'Max: ${weatherItem.max ?? '-'}°C',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text(
-                              'Min: ${weatherItem.min ?? '-'}°C',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text(
-                              'Nem: ${weatherItem.humidity ?? '-'}%',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        // Hava durumu bilgilerini buraya ekleyin.
                       );
                     },
                   );

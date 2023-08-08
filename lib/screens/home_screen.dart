@@ -38,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black45,
+        backgroundColor: Colors.red.shade900,
         title: const Text('HABERLER'),
       ),
       drawer: Drawer(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.red,
         child: ListView(
           children: [
             ListTile(
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Card(
                           elevation: 4,
-                          color: Colors.black38,
+                          color: Colors.red.shade900,
                           child: Hero(
                             tag: "newsItem_$index",
                             child: Column(
@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Text(
                                         newsItem.name ?? '',
                                         style: const TextStyle(
-                                          fontSize: 26,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.w900,
                                           color: Colors.white,
                                         ),

@@ -60,22 +60,22 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.local_pharmacy),
-            title: "ECZANE",
-            activeColorPrimary: Colors.blue,
-            inactiveColorPrimary: Colors.grey,
+            title: "Eczane",
+            activeColorPrimary: Colors.orange.shade400,
+            inactiveColorPrimary: Colors.blueGrey,
           ),
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.currency_exchange),
-            title: "DÖVİZ",
+            title: "Döviz",
             activeColorPrimary: Colors.blue,
-            inactiveColorPrimary: Colors.grey,
+            inactiveColorPrimary: Colors.blueGrey,
           ),
           PersistentBottomNavBarItem(
-              icon: const Icon(CupertinoIcons.add),
-              title: "HABERLER",
-              activeColorPrimary: Colors.blue,
-              inactiveColorPrimary: Colors.grey,
-              iconSize: 30,
+              icon: const Icon(Icons.add_box_rounded),
+              title: "Haberler",
+              activeColorPrimary: Colors.red,
+              inactiveColorPrimary: Colors.blueGrey,
+              iconSize: 20,
               textStyle: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
@@ -83,15 +83,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.cloud),
-            title: "Hava Durumu",
-            activeColorPrimary: Colors.blue,
-            inactiveColorPrimary: Colors.grey,
+            title: "Hava",
+            activeColorPrimary: Colors.green.shade600,
+            inactiveColorPrimary: Colors.blueGrey,
           ),
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.mosque),
-            title: "Namaz Vakitleri",
-            activeColorPrimary: Colors.blue,
-            inactiveColorPrimary: Colors.grey,
+            title: "Namaz",
+            activeColorPrimary: Colors.lime,
+            inactiveColorPrimary: Colors.blueGrey,
           ),
         ],
         confineInSafeArea: true,
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           curve: Curves.ease,
           duration: Duration(milliseconds: 200),
         ),
-        navBarStyle: NavBarStyle.style16,
+        navBarStyle: NavBarStyle.style15,
       ),
     );
   }
