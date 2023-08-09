@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/converters/general_exchange_rate_converter.dart';
-
 import '../models/general_exchange_rate_result.dart';
-import '../services/exchange_rate_api_service.dart'; // Gerekli dosyaları içe aktarın
+import '../services/exchange_rate_api_service.dart';
 
 class ExchangeRatePage extends StatefulWidget {
   @override
@@ -15,7 +13,7 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
   @override
   void initState() {
     super.initState();
-    _loadExchangeRateData(); // API'yi çağırarak döviz kuru verilerini al
+    _loadExchangeRateData();
   }
 
   Future<void> _loadExchangeRateData() async {
@@ -26,7 +24,6 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
       });
     } catch (e) {
       print('Hata: $e');
-      // Hata durumunu işlemek için gerekirse ek işlemler yapabilirsiniz
     }
   }
 
@@ -53,7 +50,6 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
                 return ListTile(
                   title: Text(rateResult.name ?? ''),
                   subtitle: Text('Kur: ${rateResult.rate ?? ''}'),
-                  // İhtiyaca göre daha fazla bilgi görüntüleyebilirsiniz
                 );
               },
             );
