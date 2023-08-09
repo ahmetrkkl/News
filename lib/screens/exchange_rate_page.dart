@@ -51,7 +51,7 @@ class ExchangeRatePageState extends State<ExchangeRatePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                    builder: (context) => const HomeScreen(),
                   ),
                 );
               },
@@ -63,7 +63,7 @@ class ExchangeRatePageState extends State<ExchangeRatePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PharmacyPage(),
+                    builder: (context) => const PharmacyPage(),
                   ),
                 );
               },
@@ -81,7 +81,7 @@ class ExchangeRatePageState extends State<ExchangeRatePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => WeatherPage(),
+                    builder: (context) => const WeatherPage(),
                   ),
                 );
               },
@@ -93,7 +93,7 @@ class ExchangeRatePageState extends State<ExchangeRatePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PrayerTimePage(),
+                    builder: (context) => const PrayerTimePage(),
                   ),
                 );
               },

@@ -8,11 +8,11 @@ class GeneralNewsResult {
 
   GeneralNewsResult(
       {this.key,
-      this.url,
-      this.description,
-      this.image,
-      this.name,
-      this.source});
+        this.url,
+        this.description,
+        this.image,
+        this.name,
+        this.source});
 
   GeneralNewsResult.fromJson(Map<String, dynamic> json) {
     key = json['key'];
