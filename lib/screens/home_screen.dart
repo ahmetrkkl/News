@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                         child: Card(
-                          elevation: 4,
+                          elevation: 10,
                           color: Colors.red.shade900,
                           child: Hero(
                             tag: "newsItem_$index",
@@ -178,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 newsItem.image != null
                                     ? Image.network(
                                   newsItem.image!,
-                                  width: 200,
+                                  width: 400,
                                   height: 200,
                                   fit: BoxFit.cover,
                                 )

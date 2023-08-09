@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           buttonColor: Colors.grey,
         ),
       ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: PersistentTabView(
         context,
         controller: _controller,
-        screens: const [
+        screens: [
           PharmacyPage(),
           ExchangeRatePage(),
           HomeScreen(),
