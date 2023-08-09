@@ -8,12 +8,16 @@ class ExchangeRatePage extends StatefulWidget {
 }
 
 class _ExchangeRatePageState extends State<ExchangeRatePage> {
-  Future<List<GeneralExchangeRateResult>> _exchangeRateData = Future.value([]);
+  late Future<List<GeneralExchangeRateResult>> _exchangeRateData;
 
   @override
   void initState() {
     super.initState();
-    _loadExchangeRateData();
+    _exchangeRateData = _fetchExchangeRate();
+  }
+  Future<List<GeneralExchangeRateResult>> _fetchExchangeRate() async {
+    ExchangeRateApiService apiService = ExchangeRateApiService();
+    return await apiService.fetchExchangeRate();
   }
 
   Future<void> _loadExchangeRateData() async {
@@ -23,7 +27,7 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
         _exchangeRateData = Future.value(exchangeRateData);
       });
     } catch (e) {
-      print('Hata: $e');
+      print('Hata: $e');//Hata durumu kontrolü
     }
   }
 
