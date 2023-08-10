@@ -39,9 +39,9 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
-}
+  }
 
-class _MyHomePageState extends State<MyHomePage> {
+  class _MyHomePageState extends State<MyHomePage> {
   final PersistentTabController _controller = PersistentTabController(initialIndex: 2);
 
   @override

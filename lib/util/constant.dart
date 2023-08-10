@@ -4,7 +4,7 @@ const String generalNewsUrl =
 const String generalPharmacyUrl =
     'https://api.collectapi.com/health/dutyPharmacy?ilce=%C3%87ankaya&il=Ankara';
 const String generalExchangeRateUrl =
-    'https://api.collectapi.com/economy/currencyToAll?int=10&base=USD';
+    'https://api.collectapi.com/economy/exchange?int=10&to=EUR&base=USD';
 const String generalWeatherUrl=
     'https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=ankara';
 const String generalPrayerTimeUrl=
