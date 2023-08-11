@@ -3,6 +3,7 @@ import 'package:news/models/general_exchange_rate_result.dart';
 import 'package:news/screens/pharmacy_page.dart';
 import 'package:news/screens/prayer_time_page.dart';
 import 'package:news/screens/settings_page.dart';
+import 'package:news/screens/weather_page.dart';
 import 'package:news/services/exchange_rate_api_service.dart';
 
 import 'home_screen.dart';
@@ -83,7 +84,7 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ExchangeRatePage(),
+                    builder: (context) => WeatherPage(),
                   ),
                 );
               },
