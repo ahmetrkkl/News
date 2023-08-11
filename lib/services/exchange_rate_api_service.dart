@@ -10,7 +10,7 @@ class ExchangeRateApiService {
   String apiKey = constants.apiKey;
   String apiUrl = constants.generalExchangeRateUrl;
 
-  Future<List<GeneralExchangeRateResult>> fetchExchangeRate() async {
+  Future<ExchangeRateResult?> fetchExchangeRate() async {
     final response = await http.get(
       Uri.parse(apiUrl),
       headers: {'authorization': apiKey, 'content-type': 'application/json'},
@@ -19,8 +19,8 @@ class ExchangeRateApiService {
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       GeneralExchangeRateConverter generalExchangeRateConverter =
-      GeneralExchangeRateConverter.fromJson(jsonData);
-      return generalExchangeRateConverter.result ?? [];
+          GeneralExchangeRateConverter.fromJson(jsonData);
+      return generalExchangeRateConverter.result;
     } else {
       throw Exception('Failed to load news');
     }

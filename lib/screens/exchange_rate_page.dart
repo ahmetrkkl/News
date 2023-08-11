@@ -15,7 +15,7 @@ class ExchangeRatePage extends StatefulWidget {
 }
 
 class _ExchangeRatePageState extends State<ExchangeRatePage> {
-  late Future<List<GeneralExchangeRateResult>> _exchangeRateFuture;
+  late Future<ExchangeRateResult?> _exchangeRateFuture;
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
     _exchangeRateFuture = _fetchExchangeRate();
   }
 
-  Future<List<GeneralExchangeRateResult>> _fetchExchangeRate() async {
+  Future<ExchangeRateResult?> _fetchExchangeRate() async {
     ExchangeRateApiService apiService = ExchangeRateApiService();
     return await apiService.fetchExchangeRate();
   }
@@ -74,7 +74,6 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
               title: const Text('Döviz Kuru'),
               onTap: () {
                 Navigator.pop(context);
-
               },
             ),
             ListTile(
@@ -128,11 +127,11 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
         child: RefreshIndicator(
           color: Colors.blue,
           onRefresh: _refreshWeather,
-          child: FutureBuilder<List<GeneralExchangeRateResult>>(
+          child: FutureBuilder<ExchangeRateResult?>(
             future: _exchangeRateFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (snapshot.hasError) {
@@ -141,27 +140,24 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
                 );
               } else {
                 if (snapshot.hasData) {
-                  List<GeneralExchangeRateResult>? exchangeRateList = snapshot.data;
+                  ExchangeRateResult? exchangeRateList = snapshot.data;
                   return ListView.builder(
-                    itemCount: exchangeRateList!.length,
+                    itemCount: exchangeRateList!.data?.length,
                     itemBuilder: (context, index) {
-                      GeneralExchangeRateResult exchangeRateItem = exchangeRateList[index];
+                      List<ExchangeRateData>? exchangeRateData =
+                          exchangeRateList.data;
                       return ListTile(
-                        title: Text(
-                            exchangeRateItem.name ?? ''),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Alış: ${exchangeRateItem.buying ?? ''}'),
-                            Text('Satış: ${exchangeRateItem.selling ?? ''}'),
-                          ],
-                        ),
+                        title: Text(exchangeRateList.lastupdate ?? 'Hata'),
+                        textColor: Colors.amber,
                       );
                     },
                   );
                 } else {
-                  return Center(
-                    child: Text('Veri yok.'),
+                  return const Center(
+                    child: Text(
+                      'Veri yok.',
+                      style: TextStyle(color: Colors.amber),
+                    ),
                   );
                 }
               }
