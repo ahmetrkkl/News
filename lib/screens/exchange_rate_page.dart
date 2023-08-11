@@ -141,14 +141,16 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
                 );
               } else {
                 if (snapshot.hasData) {
-                  ExchangeRateResult? exchangeRateList = snapshot.data;
+                  ExchangeRateResult? exchangeRateResult = snapshot.data;
                   return ListView.builder(
-                    itemCount: exchangeRateList!.data?.length,
+                    itemCount: exchangeRateResult?.data?.length?? 0,
                     itemBuilder: (context, index) {
-                      List<ExchangeRateData>? exchangeRateData =
-                          exchangeRateList.data;
+                      ExchangeRateData? exchangeRateData =
+                          exchangeRateResult?.data?[index];
                       return ListTile(
-                        title: Text(exchangeRateList.lastupdate ?? 'Hata'),
+                        title: Text(exchangeRateData?.name ?? 'Hata'),
+                        subtitle: Text(exchangeRateData?.code ?? ''),
+                        trailing: Text(exchangeRateData?.rate ?.toString() ?? ''),
                         textColor: Colors.amber,
                       );
                     },

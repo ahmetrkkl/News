@@ -34,7 +34,7 @@ class ExchangeRateResult {
 class ExchangeRateData {
   String? code;
   String? name;
-  String? rate;
+  double? rate;
   String? calculatedstr;
   double? calculated;
 
@@ -49,8 +49,8 @@ class ExchangeRateData {
   ExchangeRateData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     name = json['name'];
-    rate = json['rate'];
+    rate = json['rate'].toDouble();
     calculatedstr = json['calculatedstr'];
-    calculated = json['calculated'];
+    calculated = json['calculated'].toDouble();
   }
 }
