@@ -5,7 +5,6 @@ import 'package:news/screens/prayer_time_page.dart';
 import 'package:news/screens/settings_page.dart';
 import 'package:news/screens/weather_page.dart';
 import 'package:news/services/exchange_rate_api_service.dart';
-
 import 'home_screen.dart';
 
 class ExchangeRatePage extends StatefulWidget {
@@ -29,7 +28,7 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
     return await apiService.fetchExchangeRate();
   }
 
-  Future<void> _refreshWeather() async {
+  Future<void> _refreshExchangeRate() async {
     setState(() {
       _exchangeRateFuture = _fetchExchangeRate();
     });
@@ -127,7 +126,7 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
         ),
         child: RefreshIndicator(
           color: Colors.blue,
-          onRefresh: _refreshWeather,
+          onRefresh: _refreshExchangeRate,
           child: FutureBuilder<ExchangeRateResult?>(
             future: _exchangeRateFuture,
             builder: (context, snapshot) {
@@ -147,11 +146,24 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
                     itemBuilder: (context, index) {
                       ExchangeRateData? exchangeRateData =
                           exchangeRateResult?.data?[index];
-                      return ListTile(
-                        title: Text(exchangeRateData?.name ?? 'Hata'),
-                        subtitle: Text(exchangeRateData?.code ?? ''),
-                        trailing: Text(exchangeRateData?.rate ?.toString() ?? ''),
-                        textColor: Colors.amber,
+                      return Card(
+                        elevation: 4,
+                        margin: EdgeInsets.symmetric(vertical: 8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Colors.white,
+                        child: ListTile(
+                          title: Text(exchangeRateData?.name ?? 'Hata'),
+                          subtitle: Text(exchangeRateData?.code ?? ''),
+                          trailing: Text(
+                            exchangeRateData?.rate?.toString() ?? '',
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       );
                     },
                   );
