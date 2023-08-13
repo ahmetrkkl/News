@@ -30,3 +30,4 @@ class GeneralPharmacyResult {
     return data;
   }
 }
+

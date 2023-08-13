@@ -8,4 +8,4 @@ const String generalExchangeRateUrl =
 const String generalWeatherUrl=
     'https://api.collectapi.com/weather/getWeather?data.lang=tr&data.city=ankara';
 const String generalPrayerTimeUrl=
-    'https://api.collectapi.com/pray/all?data.city=istanbul';
+    'https://api.collectapi.com/pray/all?data.city=ankara';
