@@ -14,18 +14,22 @@ void main() {
 class MyApp extends StatelessWidget {
   static final darkTheme = ThemeData(
     brightness: Brightness.dark,
-    // Diğer karanlık tema özellikleri burada belirtilir
+    textTheme: TextTheme(
+      bodyText1: TextStyle(color: Colors.black),
+    ),
   );
 
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
-    // Diğer aydınlık tema özellikleri burada belirtilir
+    textTheme: TextTheme(
+      bodyText1: TextStyle(color: Colors.white),
+    ),
   );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: lightTheme, // Başlangıçta aydınlık tema uygula
+      theme: darkTheme, // Başlangıçta aydınlık tema uygula
       home: MyHomePage(),
     );
   }

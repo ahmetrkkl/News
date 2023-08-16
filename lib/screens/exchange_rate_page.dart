@@ -154,7 +154,11 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
                         ),
                         color: Colors.white,
                         child: ListTile(
-                          title: Text(exchangeRateData?.name ?? 'Hata'),
+                          title: Text(exchangeRateData?.name ?? 'Hata',
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                            ),),
                           subtitle: Text(exchangeRateData?.code ?? ''),
                           trailing: Text(
                             exchangeRateData?.rate?.toString() ?? '',

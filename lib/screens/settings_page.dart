@@ -8,7 +8,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool _darkThemeEnabled = false;
+  bool _darkThemeEnabled = true;
   bool _notificationEnabled = true;
   bool _autoRefreshEnabled = false;
   int _selectedRefreshInterval = 30;
@@ -82,21 +82,15 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void _applyTheme() {
     if (_darkThemeEnabled) {
-      // Karanlık Temayı Uygula
-      _saveThemePreference(true); // Karanlık tema tercihini kaydet
-      MyApp.applyDarkTheme(); // Karanlık temayı uygulamak için statik fonksiyonu çağır
+      _saveThemePreference(true);
+      MyApp.applyDarkTheme();
     } else {
-      // Aydınlık Temayı Uygula
-      _saveThemePreference(false); // Aydınlık tema tercihini kaydet
-      MyApp.applyLightTheme(); // Aydınlık temayı uygulamak için statik fonksiyonu çağır
+      _saveThemePreference(false);
+      MyApp.applyLightTheme();
     }
   }
 
   void _saveThemePreference(bool isDarkTheme) {
-    // Tema tercihini kaydetmek için paylaşılan tercihleri veya başka bir yöntemi kullanabilirsiniz
-    // Örnek olarak paylaşılan tercihleri kullanma:
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // prefs.setBool('darkThemeEnabled', isDarkTheme);
   }
 
 
