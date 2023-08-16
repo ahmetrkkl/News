@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../main.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -80,8 +81,24 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _applyTheme() {
-
+    if (_darkThemeEnabled) {
+      // Karanlık Temayı Uygula
+      _saveThemePreference(true); // Karanlık tema tercihini kaydet
+      MyApp.applyDarkTheme(); // Karanlık temayı uygulamak için statik fonksiyonu çağır
+    } else {
+      // Aydınlık Temayı Uygula
+      _saveThemePreference(false); // Aydınlık tema tercihini kaydet
+      MyApp.applyLightTheme(); // Aydınlık temayı uygulamak için statik fonksiyonu çağır
+    }
   }
+
+  void _saveThemePreference(bool isDarkTheme) {
+    // Tema tercihini kaydetmek için paylaşılan tercihleri veya başka bir yöntemi kullanabilirsiniz
+    // Örnek olarak paylaşılan tercihleri kullanma:
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // prefs.setBool('darkThemeEnabled', isDarkTheme);
+  }
+
 
   void _applyNotificationSettings() {
 

@@ -8,30 +8,41 @@ import 'package:news/screens/weather_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  static final darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    // Diğer karanlık tema özellikleri burada belirtilir
+  );
+
+  static final lightTheme = ThemeData(
+    brightness: Brightness.light,
+    // Diğer aydınlık tema özellikleri burada belirtilir
+  );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.grey[900],
-        hintColor: Colors.grey,
-        scaffoldBackgroundColor: Colors.blueGrey,
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white),
-        ),
-        buttonTheme: const ButtonThemeData(
-          buttonColor: Colors.grey,
-        ),
-      ),
+      theme: lightTheme, // Başlangıçta aydınlık tema uygula
       home: MyHomePage(),
     );
   }
 
+  static void applyDarkTheme() {
+    runApp(MaterialApp(
+      theme: darkTheme,
+      home: MyHomePage(),
+    ));
+  }
+
+  static void applyLightTheme() {
+    runApp(MaterialApp(
+      theme: lightTheme,
+      home: MyHomePage(),
+    ));
+  }
 }
 
 class MyHomePage extends StatefulWidget {
