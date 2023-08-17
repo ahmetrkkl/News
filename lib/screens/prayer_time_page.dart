@@ -39,11 +39,11 @@ class PrayerTimePageState extends State<PrayerTimePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey[900],
+        backgroundColor: Colors.red[900],
         title: const Text('Namaz Vakitleri'),
       ),
       drawer: Drawer(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.red[400],
         child: ListView(
           children: [
             ListTile(
@@ -117,13 +117,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
       ),
       body: Container(
         padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blueGrey, Colors.blueGrey],
-          ),
-        ),
+        decoration: BoxDecoration(),
         child: RefreshIndicator(
           color: Colors.blue,
           onRefresh: _refreshPrayerTime,
@@ -146,7 +140,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
                     itemBuilder: (context, index) {
                       GeneralPrayerTimeResult prayerTimeItem = weatherList[index];
                       return Card(
-                        color: Colors.lime[200],
+                        color: Colors.red.shade900,
                         elevation: 10,
                         margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: Padding(
@@ -157,7 +151,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black87,
+                                color: Colors.white70,
                               ),
                             ),
                             subtitle: Text(
@@ -165,7 +159,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           ),

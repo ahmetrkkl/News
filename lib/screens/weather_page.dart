@@ -40,11 +40,11 @@ class _WeatherPageState extends State<WeatherPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Hava Durumu', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.green[900],
+        backgroundColor: Colors.red[900],
         elevation: 0,
       ),
       drawer: Drawer(
-        backgroundColor: Colors.green[200],
+        backgroundColor: Colors.red[400],
         child: ListView(
           children: [
             ListTile(
@@ -118,13 +118,7 @@ class _WeatherPageState extends State<WeatherPage> {
       ),
       body: Container(
         padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.greenAccent.shade200, Colors.greenAccent.shade100],
-          ),
-        ),
+        decoration: BoxDecoration(),
         child: RefreshIndicator(
           color: Colors.blue,
           onRefresh: _refreshWeather,
@@ -147,7 +141,7 @@ class _WeatherPageState extends State<WeatherPage> {
                     itemBuilder: (context, index) {
                       GeneralWeatherResult weatherItem = weatherList[index];
                       return Card(
-                        color: Colors.green[900],
+                        color: Colors.red.shade900,
                         elevation: 10,
                         margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: Padding(
@@ -164,14 +158,14 @@ class _WeatherPageState extends State<WeatherPage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.greenAccent[200],
+                                color: Colors.white,
                               ),
                             ),
                             subtitle: Text(
                               '${weatherItem.day ?? ''} - ${weatherItem.description ?? ''}',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: Colors.grey[200],
+                                color: Colors.white70,
                               ),
                             ),
                             trailing: Column(
@@ -179,15 +173,15 @@ class _WeatherPageState extends State<WeatherPage> {
                               children: [
                                 Text(
                                   'Max: ${weatherItem.max ?? '-'}°C',
-                                  style: TextStyle(color: Colors.greenAccent[200]),
+                                  style: TextStyle(color: Colors.white),
                                 ),
                                 Text(
                                   'Min: ${weatherItem.min ?? '-'}°C',
-                                  style: TextStyle(color: Colors.greenAccent[200]),
+                                  style: TextStyle(color: Colors.white),
                                 ),
                                 Text(
                                   'Nem: ${weatherItem.humidity ?? '-'}%',
-                                  style: TextStyle(color: Colors.greenAccent[200]),
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ],
                             ),

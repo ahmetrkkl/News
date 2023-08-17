@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Haberler'),
       ),
       drawer: Drawer(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red.shade400,
         child: ListView(
           children: [
             ListTile(

@@ -39,11 +39,11 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Döviz Kuru', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Colors.red[900],
         elevation: 0,
       ),
       drawer: Drawer(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.red[400],
         child: ListView(
           children: [
             ListTile(
@@ -117,13 +117,7 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
       ),
       body: Container(
         padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blueAccent.shade200, Colors.blueAccent.shade100],
-          ),
-        ),
+        decoration: BoxDecoration(),
         child: RefreshIndicator(
           color: Colors.blue,
           onRefresh: _refreshExchangeRate,
@@ -152,18 +146,18 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        color: Colors.white,
+                        color: Colors.red.shade900,
                         child: ListTile(
                           title: Text(exchangeRateData?.name ?? 'Hata',
                             style: TextStyle(
-                              color: Colors.black54,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),),
                           subtitle: Text(exchangeRateData?.code ?? ''),
                           trailing: Text(
                             exchangeRateData?.rate?.toString() ?? '',
                             style: TextStyle(
-                              color: Colors.green,
+                              color: Colors.lightGreen,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

@@ -38,10 +38,10 @@ import 'exchange_rate_page.dart';
       return Scaffold(
         appBar: AppBar(
           title: const Text('Nöbetçi Eczane'),
-          backgroundColor: Colors.orange[700],
+          backgroundColor: Colors.red[700],
         ),
         drawer: Drawer(
-          backgroundColor: Colors.orange[400],
+          backgroundColor: Colors.red[400],
           child: ListView(
             children: [
               ListTile(
@@ -115,13 +115,7 @@ import 'exchange_rate_page.dart';
         ),
       body: Container(
       padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-      gradient: LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [Colors.orange.shade200, Colors.orange.shade200],
-      ),
-      ),
+      decoration: BoxDecoration(),
       child: RefreshIndicator(
       color: Colors.blue,
       onRefresh: _refreshPharmacy,
@@ -144,14 +138,14 @@ import 'exchange_rate_page.dart';
       itemBuilder: (context, index) {
       GeneralPharmacyResult pharmacyItem = weatherList[index];
                       return Card(
-                        color: Colors.orange.shade400,
+                        color: Colors.red.shade900,
                         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         elevation: 2,
                         child: ListTile(
                           title: Text(
                             '${pharmacyItem.name ?? ''} ECZANESİ',
                             style: const TextStyle(
-                              color: Color.fromRGBO(140, 9, 9, 100),
+                              color: Color.fromRGBO(255, 255, 255, 50),
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
@@ -171,7 +165,7 @@ import 'exchange_rate_page.dart';
                                   '0${pharmacyItem.phone ?? ''} ',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.blueGrey,
+                                  color: Colors.white60,
                                   fontWeight: FontWeight.bold
                                 ),
                               ),
@@ -179,7 +173,7 @@ import 'exchange_rate_page.dart';
                                 pharmacyItem.dist ?? '',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.blueGrey,
+                                  color: Colors.white70,
                                   fontWeight: FontWeight.bold
                                 ),
                               )
