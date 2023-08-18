@@ -86,14 +86,14 @@ class MyHomePage extends StatefulWidget {
         items: [
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.local_pharmacy),
-            title: "Eczane",
-            activeColorPrimary: Colors.orange.shade400,
+            title: "Pharmacy".tr(),
+            activeColorPrimary: Colors.red,
             inactiveColorPrimary: Colors.blueGrey,
           ),
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.currency_exchange),
-            title: "Döviz",
-            activeColorPrimary: Colors.blue,
+            title: "Exchange".tr(),
+            activeColorPrimary: Colors.red,
             inactiveColorPrimary: Colors.blueGrey,
           ),
           PersistentBottomNavBarItem(
@@ -101,7 +101,7 @@ class MyHomePage extends StatefulWidget {
                   Icons.newspaper,
               color: Colors.blueGrey,
               ),
-              title: "Haberler",
+              title: "News".tr(),
               activeColorPrimary: Colors.red,
               inactiveColorPrimary: Colors.blueGrey,
               iconSize: 20,
@@ -112,14 +112,14 @@ class MyHomePage extends StatefulWidget {
           ),
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.cloud),
-            title: "Hava",
-            activeColorPrimary: Colors.green.shade600,
+            title: "Weather".tr(),
+            activeColorPrimary: Colors.red,
             inactiveColorPrimary: Colors.blueGrey,
           ),
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.mosque),
-            title: "Namaz",
-            activeColorPrimary: Colors.lime,
+            title: "Prayer".tr(),
+            activeColorPrimary: Colors.red,
             inactiveColorPrimary: Colors.blueGrey,
           ),
         ],
