@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news/models/general_prayer_time_result.dart';
 import 'package:news/screens/pharmacy_page.dart';
@@ -40,14 +41,14 @@ class PrayerTimePageState extends State<PrayerTimePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red[900],
-        title: const Text('Namaz Vakitleri'),
+        title: Text('Prayer'.tr()),
       ),
       drawer: Drawer(
         backgroundColor: Colors.red[400],
         child: ListView(
           children: [
             ListTile(
-              title: const Text('Haberler'),
+              title: Text('News'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -59,7 +60,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
               },
             ),
             ListTile(
-              title: const Text('Nöbetçi Eczane'),
+              title: Text("Pharmacy".tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -71,7 +72,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
               },
             ),
             ListTile(
-              title: const Text('Döviz Kuru'),
+              title: Text('Exchange'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -83,7 +84,7 @@ class PrayerTimePageState extends State<PrayerTimePage> {
               },
             ),
             ListTile(
-              title: const Text('Hava Durumu'),
+              title: Text('Weather'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -95,13 +96,13 @@ class PrayerTimePageState extends State<PrayerTimePage> {
               },
             ),
             ListTile(
-              title: const Text('Namaz Vakitleri'),
+              title: Text('Prayer'.tr()),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Ayarlar'),
+              title: Text('Settings'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(

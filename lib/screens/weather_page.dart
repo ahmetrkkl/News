@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news/models/general_weather_result.dart';
 import 'package:news/screens/exchange_rate_page.dart';
@@ -39,7 +40,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hava Durumu', style: TextStyle(color: Colors.white)),
+        title: Text('Weather'.tr(), style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.red[900],
         elevation: 0,
       ),
@@ -48,7 +49,7 @@ class _WeatherPageState extends State<WeatherPage> {
         child: ListView(
           children: [
             ListTile(
-              title: const Text('Haberler'),
+              title: Text('News'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -60,7 +61,7 @@ class _WeatherPageState extends State<WeatherPage> {
               },
             ),
             ListTile(
-              title: const Text('Nöbetçi Eczane'),
+              title: Text("Pharmacy".tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -72,7 +73,7 @@ class _WeatherPageState extends State<WeatherPage> {
               },
             ),
             ListTile(
-              title: const Text('Döviz Kuru'),
+              title: Text('Exchange'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -84,13 +85,13 @@ class _WeatherPageState extends State<WeatherPage> {
               },
             ),
             ListTile(
-              title: const Text('Hava Durumu'),
+              title: Text('Weather'.tr()),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Namaz Vakitleri'),
+              title: Text('Prayer'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -102,7 +103,7 @@ class _WeatherPageState extends State<WeatherPage> {
               },
             ),
             ListTile(
-              title: const Text('Ayarlar'),
+              title: Text('Settings'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(

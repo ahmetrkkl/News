@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../main.dart';
@@ -20,14 +21,14 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black45,
-        title: const Text('Ayarlar'),
+        title: Text('Settings'.tr()),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SwitchListTile(
-              title: const Text('Karanlık Tema'),
+              title: Text('DarkTheme'.tr()),
               value: _darkThemeEnabled,
               onChanged: (value) {
                 setState(() {
@@ -37,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             SwitchListTile(
-              title: const Text('Bildirimler'),
+              title: Text('Notification'.tr()),
               value: _notificationEnabled,
               onChanged: (value) {
                 setState(() {
@@ -47,7 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             SwitchListTile(
-              title: const Text('Otomatik Yenile'),
+              title: Text('Automatic Refresh'.tr()),
               value: _autoRefreshEnabled,
               onChanged: (value) {
                 setState(() {
@@ -57,7 +58,7 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             ListTile(
-              title: const Text('Yenileme Aralığı'),
+              title: Text('Refresh Interval'.tr()),
               trailing: DropdownButton<int>(
                 value: _selectedRefreshInterval,
                 onChanged: (selectedInterval) {

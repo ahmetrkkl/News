@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/screens/exchange_rate_page.dart';
@@ -7,8 +8,15 @@ import 'package:news/screens/prayer_time_page.dart';
 import 'package:news/screens/weather_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-void main() {
-  runApp(MyApp());
+ void main ()async {
+   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(
+      EasyLocalization(
+    supportedLocales: [Locale('tr', 'TR'), Locale('en', 'US')],
+    path: 'assets/translations', // <-- change the path of the translation files
+    fallbackLocale: Locale('tr', 'TR'), startLocale: Locale("tr", "TR"), child: MyApp(),));
+
 }
 
 class MyApp extends StatelessWidget {
@@ -29,6 +37,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: darkTheme, // Başlangıçta aydınlık tema uygula
       home: MyHomePage(),
     );

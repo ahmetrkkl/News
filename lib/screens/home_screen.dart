@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news/screens/exchange_rate_page.dart';
 import 'package:news/screens/pharmacy_page.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<GeneralNewsResult>> _newsFuture;
-  String currentLanguageCode = 'tr';
+  String currentLanguageCode = 'en';
   int _selectedIndex = 0;
 
   @override
@@ -43,20 +44,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red.shade900,
-        title: const Text('Haberler'),
+        title: Text('News'.tr()),
       ),
       drawer: Drawer(
         backgroundColor: Colors.red.shade400,
         child: ListView(
           children: [
             ListTile(
-              title: const Text('Haberler'),
+              title: Text('News'.tr()),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Nöbetçi Eczane'),
+              title: Text("Pharmacy".tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -68,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Döviz Kuru'),
+              title: Text('Exchange'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Hava Durumu'),
+              title: Text('Weather'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -92,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Namaz Vakitleri'),
+              title: Text('Prayer'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -104,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Ayarlar'),
+              title: Text('Settings'.tr()),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -117,10 +118,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const Divider(),
             ListTile(
-              title: const Text('Dil Seç'),
+              title: Text('Language'.tr()),
               trailing: DropdownButton<String>(
                 value: currentLanguageCode,
                 onChanged: (selectedLanguageCode) {
+                  if(selectedLanguageCode == "en"){
+                    context.setLocale(Locale('en', 'US'));
+                  }else{
+                    context.setLocale(Locale('tr', 'TR'));
+                  }
                   setState(() {
                     currentLanguageCode = selectedLanguageCode!;
                   });
