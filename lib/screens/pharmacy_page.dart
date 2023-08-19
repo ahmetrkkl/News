@@ -39,7 +39,7 @@ import 'exchange_rate_page.dart';
       return Scaffold(
         appBar: AppBar(
           title: Text("Pharmacy".tr()),
-          backgroundColor: Colors.red[700],
+          backgroundColor: Colors.red[900],
         ),
         drawer: Drawer(
           backgroundColor: Colors.red[400],
